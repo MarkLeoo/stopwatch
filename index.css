@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: orange;
+}
+.stopwatch {
+    text-align: center;
+    line-height: 7em;
+}
+.stopwatch .stopwatch__title h1:first-child {
+    font-size: 5em;
+}
+.stopwatch .stopwatch__title h1:last-child {
+    font-size: 3em;
+}
+.stopwatch__content {
+    font-size: 5em;
+    line-height: 2em;
+}
+.stopwatch__button button {
+    width: 200px;
+    height: 80px;
+    font-size: 3em;
+    margin: 0 10px;
+    border: 1px solid #fff;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+}
+.stopwatch__button button:hover {
+    background: #fff;
+    transition: all 0.5s ease-in-out;
+}
