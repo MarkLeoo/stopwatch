@@ -13,10 +13,10 @@
     <div class="container">
         <div class="stopwatch">
             <div class="stopwatch__title">
-                <h1>Stop Watch</h1>
+                <h1>Countdown timer by copy code</h1>
                 <h1>VANILLA JAVASCRIPT</h1>
             </div>
-            <div class="stopwatch__content">
+            <!-- <div class="stopwatch__content">
                 <p> <span id="seconds">00</span>:<span id="tens">00</span>
                 </p>
             </div>
@@ -24,57 +24,58 @@
                 <button id="start">Start</button>
                 <button id="stop">Stop</button>
                 <button id="reset">Reset</button>
+            </div> -->
+            <div class="stopwatch__content">
+                <p> <span id="hours">02</span>:<span id="minutes">00</span>:<span id="seconds">00</span>
+                </p>
+            </div>
+            <div class="stopwatch__button">
+                <button id="start">Start</button>
             </div>
         </div>
     </div>
+
+
     <script>
-        var tens = "00";
-        var seconds = "00";
-        var btnStart = document.getElementById("start");
-        var btnStop = document.getElementById("stop");
-        var btnReset = document.getElementById("reset");
-        var appendSeconds = document.getElementById("seconds");
-        var appendTens = document.getElementById("tens");
-        var interval;
+        const appendHours = document.getElementById("hours");
+        const appendMinutes = document.getElementById("minutes");
+        const appendSeconds = document.getElementById("seconds");
+        const btnStart = document.getElementById("start");
+        let sec = 7200;
+
         btnStart.onclick = () => {
-            clearInterval(interval);
-            interval = setInterval(startTimer, 10);
+            countDownTimer();
+            setInterval(countDownTimer, 1000);
+            btnStart.style.display = "none";
         }
 
-        btnStop.onclick = () => {
-            clearInterval(interval);
-        }
-
-        btnReset.onclick = () => {
-            tens = "00";
-            seconds = "00";
-            appendTens.innerHTML = tens;
-            appendSeconds.innerHTML = seconds;
-            clearInterval(interval);
-        }
-
-        function startTimer() {
-            tens++;
-            if (tens <= 9) {
-                appendTens.innerHTML = "0" + tens;
+        const countDownTimer = () => {
+            let hour, minute, second;
+            minute = Math.floor(sec / 60);
+            hour = Math.floor(minute / 60);
+            second = sec % 60;
+            minute %= 60;
+            appendHours.innerHTML = hour;
+            appendMinutes.innerHTML = minute;
+            appendSeconds.innerHTML = second;
+            if (sec > 0) {
+                sec--;
+            } else {
+                clearInterval();
             }
-
-            if (tens > 9) {
-                appendTens.innerHTML = tens;
+            if (hour < 10) {
+                appendHours.innerHTML = "0" + hour;
             }
-
-            if (tens > 99) {
-                seconds++;
-                appendSeconds.innerHTML = "0" + seconds;
-                tens = 0;
-                appendTens.innerHTML = "0" + tens;
+            if (minute < 10) {
+                appendMinutes.innerHTML = "0" + minute;
             }
-
-            if (seconds > 9) {
-                appendSeconds.innerHTML = seconds;
+            if (second < 10) {
+                appendSeconds.innerHTML = "0" + second;
             }
         }
+
     </script>
+
 </body>
 
 </html>
